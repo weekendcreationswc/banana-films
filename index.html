@@ -3,620 +3,348 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weekend Creations | Premier Advertising & Digital Marketing Agency</title>
-  <meta name="description" content="Weekend Creations is a premier advertising and digital marketing agency. CREATE. CAPTIVATE. CONVERT. Custom growth campaigns, luxury branding, and viral social media marketing.">
-  
+  <meta name="description" content="Banana Films is a premium, creative production studio specializing in storytelling, commercial films, documentaries, corporate videos, and social media content.">
+  <meta name="keywords" content="Banana Films, film production, video editing, corporate video, documentary, commercial films, video production studio">
+  <meta name="author" content="Banana Films">
+  <title>Banana Films | Premium Creative Film Production Studio</title>
+
+  <!-- OpenGraph Social Metadata -->
+  <meta property="og:title" content="Banana Films | Premium Creative Film Production Studio">
+  <meta property="og:description" content="Bringing stories to life through film. Discover our commercials, corporate videos, documentaries, and social media content.">
+  <meta property="og:image" content="assets/hero.png">
+  <meta property="og:url" content="https://bananafilms.co">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpg" href="assets/logo.jpg">
+
   <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  
-  <!-- Custom CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Lucide Icons for Premium UI Visuals -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
-  <!-- Custom Glow Cursor Aura -->
-  <div class="custom-cursor"></div>
-  <div class="custom-cursor-dot"></div>
-
-  <!-- Background Color-Graded Ambient Blobs -->
-  <div class="ambient-glows">
-    <div class="glow-blob blob-purple"></div>
-    <div class="glow-blob blob-cyan"></div>
-    <div class="glow-blob blob-orange"></div>
-  </div>
-
-  <!-- Floating Glassmorphic Header -->
-  <header class="floating-header">
+  <!-- Sticky Navigation Header -->
+  <header class="main-header" id="mainHeader">
     <div class="header-container">
-      <a href="#" class="logo" id="nav-logo">
-        <span class="logo-accent">Weekend</span>Creations<span class="dot">.</span>
+      <a href="#home" class="logo-link" id="logoLink">
+        <img src="assets/logo.jpg" alt="Banana Films Logo" class="nav-logo" id="navLogo">
+        <span class="brand-name font-syne">BANANA <span class="highlight-yellow">FILMS</span></span>
       </a>
-      <nav class="nav-menu">
-        <a href="#hero" class="nav-link active" data-sec="hero">Home</a>
-        <a href="#philosophy" class="nav-link" data-sec="philosophy">Philosophy</a>
-        <a href="#services" class="nav-link" data-sec="services">Services</a>
-        <a href="#showcase" class="nav-link" data-sec="showcase">Showcase</a>
-        <a href="#contact" class="nav-link" data-sec="contact">Contact</a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" id="desktopNav" aria-label="Main Navigation">
+        <ul>
+          <li><a href="#home" class="nav-item active" id="navLinkHome">Home</a></li>
+          <li><a href="#portfolio" class="nav-item" id="navLinkPortfolio">Portfolio</a></li>
+          <li><a href="#contact" class="nav-item" id="navLinkContact">Contact</a></li>
+        </ul>
       </nav>
-      <div class="header-actions">
-        <a href="https://wa.me/919446777095" target="_blank" class="btn btn-nav-cta">
-          <i data-lucide="message-square"></i>
-          <span>Let's Talk</span>
-        </a>
-        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-      </div>
+
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger-menu" id="hamburgerMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileNavMenu">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-menu-drawer">
-    <nav class="mobile-nav-menu">
-      <a href="#hero" class="mobile-nav-link" data-sec="hero">Home</a>
-      <a href="#philosophy" class="mobile-nav-link" data-sec="philosophy">Philosophy</a>
-      <a href="#services" class="mobile-nav-link" data-sec="services">Services</a>
-      <a href="#showcase" class="mobile-nav-link" data-sec="showcase">Showcase</a>
-      <a href="#contact" class="mobile-nav-link" data-sec="contact">Contact</a>
-      <a href="https://wa.me/919446777095" target="_blank" class="mobile-nav-link wa-accent">
-        <i data-lucide="message-square"></i> WhatsApp Now
-      </a>
+  <!-- Mobile Overlay Navigation Menu -->
+  <div class="mobile-nav-overlay" id="mobileNavMenu" aria-hidden="true">
+    <nav class="mobile-nav" aria-label="Mobile Navigation">
+      <ul>
+        <li><a href="#home" class="mobile-nav-item" id="mobNavLinkHome">Home</a></li>
+        <li><a href="#portfolio" class="mobile-nav-item" id="mobNavLinkPortfolio">Portfolio</a></li>
+        <li><a href="#contact" class="mobile-nav-item" id="mobNavLinkContact">Contact</a></li>
+      </ul>
     </nav>
   </div>
 
   <main>
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-      <div class="container hero-container">
-        <div class="hero-content">
-          <div class="badge-container scroll-reveal">
-            <span class="hero-badge">
-              <span class="badge-dot"></span> Digital Marketing & Advertising Laboratory
-            </span>
-          </div>
-          
-          <h1 class="hero-title scroll-reveal">
-            <span class="title-line block-text text-create">CREATE<span class="title-dot">.</span></span>
-            <span class="title-line block-text text-captivate">CAPTIVATE<span class="title-dot">.</span></span>
-            <span class="title-line block-text text-convert">CONVERT<span class="title-dot">.</span></span>
-          </h1>
-          
-          <p class="hero-desc scroll-reveal">
-            We engineer high-performance brand architecture and viral marketing pipelines for businesses ready to dominate their market.
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-bg" style="background-image: url('assets/hero.png');"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <span class="hero-kicker font-syne fade-in-element">CREATIVE PRODUCTION STUDIO</span>
+        <h1 class="hero-title font-syne fade-in-element">
+          Bringing <span class="text-highlight">Stories</span> to Life Through <span class="text-highlight">Film</span>
+        </h1>
+        <p class="hero-subtitle fade-in-element">
+          Creative film production, commercials, documentaries, corporate videos, and digital content.
+        </p>
+        <div class="hero-actions fade-in-element">
+          <a href="#portfolio" class="btn btn-primary" id="heroBtnViewWork">View Work</a>
+          <a href="https://wa.me/919446777095?text=Hello%20Banana%20Films,%20I%20would%20like%20to%20discuss%20a%20project." 
+             target="_blank" rel="noopener noreferrer" class="btn btn-secondary whatsapp-btn-action" id="heroBtnWhatsApp">
+            <svg class="icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.62.963 3.41 1.47 5.259 1.471h.005c5.479 0 9.935-4.457 9.94-9.943.002-2.657-1.03-5.155-2.908-7.034-1.879-1.878-4.379-2.913-7.042-2.914-5.485 0-9.94 4.455-9.945 9.94-.001 1.917.499 3.79 1.447 5.424l-.988 3.607 3.693-.97.012.009zM17.65 14.77c-.3-.15-1.77-.874-2.046-.975-.276-.101-.476-.15-.676.15-.2.3-.774.975-.95 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.89-.795-1.49-1.77-1.665-2.07-.175-.3-.019-.462.13-.61.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.628-.926-2.228-.244-.588-.491-.507-.676-.517-.174-.01-.375-.012-.575-.012-.2 0-.525.075-.8.375-.276.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.116 4.525.715.31 1.273.495 1.708.633.718.228 1.37.196 1.885.12.574-.085 1.77-.724 2.02-1.425.25-.7.25-1.299.175-1.425-.076-.125-.275-.2-.575-.35z"/>
+            </svg>
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator" id="heroScrollIndicator">
+        <a href="#about" aria-label="Scroll to About Section">
+          <span class="mouse-icon">
+            <span class="wheel"></span>
+          </span>
+          <span class="arrow-down"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section container" id="about">
+      <div class="section-header">
+        <span class="section-kicker font-syne">WHO WE ARE</span>
+        <h2 class="section-title font-syne">About Banana Films</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-desc-col">
+          <p class="about-text leading-relaxed">
+            Banana Films is a creative production studio focused on storytelling through film, video production, editing, and branded content. We combine high-end cinematography, dynamic pacing, and editorial finesse to create digital content that leaves a lasting impression.
           </p>
-          
-          <div class="hero-actions scroll-reveal">
-            <a href="#contact" class="btn btn-primary">
-              <span>Start Your Growth Journey</span>
-              <i data-lucide="arrow-up-right"></i>
-            </a>
-            <a href="#services" class="btn btn-secondary">
-              <span>Explore Capabilities</span>
-            </a>
-          </div>
+          <p class="about-subtext leading-relaxed">
+            Whether it is an international commercial, a deep-dive documentary, or highly engaging social media campaigns, we tailor our approach to elevate the brand's voice and engage the audience emotionally.
+          </p>
         </div>
-        
-        <div class="hero-visual scroll-reveal">
-          <div class="scene-container">
-            <div class="premium-card-wrapper">
-              <div class="glass-frame">
-                <img src="assets/marketing_hero.png" alt="Color Graded Abstract Growth Vector" class="hero-main-img">
-                <div class="card-overlay-badge top-left">
-                  <i data-lucide="trending-up"></i>
-                  <span>+412% Traffic Boost</span>
-                </div>
-                <div class="card-overlay-badge bottom-right">
-                  <i data-lucide="zap"></i>
-                  <span>Conversion Optimized</span>
-                </div>
-              </div>
+        <div class="about-highlights-col">
+          <!-- Highlight Item 1 -->
+          <div class="highlight-card">
+            <div class="highlight-icon-box">
+              <svg class="highlight-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+            </div>
+            <div class="highlight-info">
+              <h3 class="highlight-title font-syne">Creative Storytelling</h3>
+              <p class="highlight-desc">Crafting unique narrative arcs that connect with audiences and stay memorable.</p>
+            </div>
+          </div>
+          <!-- Highlight Item 2 -->
+          <div class="highlight-card">
+            <div class="highlight-icon-box">
+              <svg class="highlight-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 16H5V8h9v8z"/>
+              </svg>
+            </div>
+            <div class="highlight-info">
+              <h3 class="highlight-title font-syne">Professional Production</h3>
+              <p class="highlight-desc">Utilizing industry-standard cinema cameras, lighting equipment, and pro editing workflows.</p>
+            </div>
+          </div>
+          <!-- Highlight Item 3 -->
+          <div class="highlight-card">
+            <div class="highlight-icon-box">
+              <svg class="highlight-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+              </svg>
+            </div>
+            <div class="highlight-info">
+              <h3 class="highlight-title font-syne">Fast Delivery</h3>
+              <p class="highlight-desc">Optimized editing pipelines that ensure quick turnaround times without compromising detail.</p>
             </div>
           </div>
         </div>
       </div>
-      
-      <div class="hero-scroll-indicator">
-        <span class="scroll-mouse">
-          <span class="scroll-wheel"></span>
-        </span>
-        <span class="scroll-text">Scroll to explore</span>
-      </div>
     </section>
 
-    <!-- PHILOSOPHY SECTION (CREATE - CAPTIVATE - CONVERT) -->
-    <section id="philosophy" class="philosophy-section">
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
       <div class="container">
         <div class="section-header">
-          <span class="sub-title">Our Formula</span>
-          <h2 class="section-title">The Three Pillars of Digital Supremacy</h2>
-          <p class="section-desc">Traditional marketing is static. We design kinetic pipelines that turn anonymous viewers into brand fanatics.</p>
-        </div>
-        
-        <div class="philosophy-grid">
-          <!-- Create Card -->
-          <div class="philosophy-card card-create scroll-reveal" data-glow-color="#6366F1">
-            <div class="philosophy-num">01</div>
-            <div class="philosophy-icon">
-              <i data-lucide="paint-brush"></i>
-            </div>
-            <h3 class="philosophy-title">CREATE.</h3>
-            <p class="philosophy-text">
-              We form stunning digital identities, luxury brand structures, high-end interfaces, and unique artistic assets that set you apart from noise.
-            </p>
-            <ul class="philosophy-features">
-              <li><i data-lucide="check-circle-2"></i> Brand Identity & Logo Design</li>
-              <li><i data-lucide="check-circle-2"></i> Premium UI/UX Architectures</li>
-              <li><i data-lucide="check-circle-2"></i> High-converting Landing Pages</li>
-            </ul>
-          </div>
-
-          <!-- Captivate Card -->
-          <div class="philosophy-card card-captivate scroll-reveal" data-glow-color="#06B6D4">
-            <div class="philosophy-num">02</div>
-            <div class="philosophy-icon">
-              <i data-lucide="sparkles"></i>
-            </div>
-            <h3 class="philosophy-title">CAPTIVATE.</h3>
-            <p class="philosophy-text">
-              Through cinematic video, interactive narratives, highly engaging social hooks, and targeted storytelling, we capture the world's most valuable asset: attention.
-            </p>
-            <ul class="philosophy-features">
-              <li><i data-lucide="check-circle-2"></i> Viral Social Content & Media</li>
-              <li><i data-lucide="check-circle-2"></i> Narrative Advertising Campaigns</li>
-              <li><i data-lucide="check-circle-2"></i> Immersive Micro-interactions</li>
-            </ul>
-          </div>
-
-          <!-- Convert Card -->
-          <div class="philosophy-card card-convert scroll-reveal" data-glow-color="#EC4899">
-            <div class="philosophy-num">03</div>
-            <div class="philosophy-icon">
-              <i data-lucide="bar-chart-3"></i>
-            </div>
-            <h3 class="philosophy-title">CONVERT.</h3>
-            <p class="philosophy-text">
-              Creative strategy meets quantitative analysis. We deploy high-converting funnels, elite search engine optimization (SEO), and scalable ads that transform eyeballs into revenue.
-            </p>
-            <ul class="philosophy-features">
-              <li><i data-lucide="check-circle-2"></i> High-ROI Performance Marketing</li>
-              <li><i data-lucide="check-circle-2"></i> Advanced Search Dominance (SEO)</li>
-              <li><i data-lucide="check-circle-2"></i> Behavioral Funnel Optimization</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES SECTION -->
-    <section id="services" class="services-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="sub-title">What We Master</span>
-          <h2 class="section-title">High-Octane Growth Capabilities</h2>
-          <p class="section-desc">We don't offer general services; we build precise growth engines that amplify your market dominance.</p>
+          <span class="section-kicker font-syne">OUR RECENT WORK</span>
+          <h2 class="section-title font-syne">Portfolio Showcase</h2>
+          <div class="section-line"></div>
         </div>
 
-        <div class="services-grid">
-          <!-- Service 1 -->
-          <div class="service-card scroll-reveal">
-            <div class="service-glow-edge"></div>
-            <div class="service-icon-container bg-glow-indigo">
-              <i data-lucide="target"></i>
-            </div>
-            <h3 class="service-title">Performance Marketing</h3>
-            <p class="service-desc-text">Laser-targeted PPC campaigns, lead generation pipelines, and social ads optimized daily for maximum acquisition cost reduction and massive ROI scaling.</p>
-            <div class="service-footer">
-              <span class="service-stat">Avg ROI: 4.8x</span>
-              <a href="#contact" class="service-arrow"><i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
+        <!-- Filter Navigation -->
+        <div class="portfolio-filters" id="portfolioFilters" role="tablist" aria-label="Portfolio Filters">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true" id="filterBtnAll">All Projects</button>
+          <button class="filter-btn" data-filter="commercial" role="tab" aria-selected="false" id="filterBtnCommercial">Commercials</button>
+          <button class="filter-btn" data-filter="corporate" role="tab" aria-selected="false" id="filterBtnCorporate">Corporate</button>
+          <button class="filter-btn" data-filter="documentary" role="tab" aria-selected="false" id="filterBtnDocumentary">Documentaries</button>
+          <button class="filter-btn" data-filter="social" role="tab" aria-selected="false" id="filterBtnSocial">Social Media</button>
+        </div>
 
-          <!-- Service 2 -->
-          <div class="service-card scroll-reveal">
-            <div class="service-glow-edge"></div>
-            <div class="service-icon-container bg-glow-cyan">
-              <i data-lucide="globe-2"></i>
+        <!-- Responsive Gallery Grid -->
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Item 1: Commercial -->
+          <article class="portfolio-item show" data-category="commercial" tabindex="0" aria-haspopup="dialog" id="portItemCommercial">
+            <div class="portfolio-thumb-wrapper">
+              <img src="assets/commercial.png" alt="Sleek sports car commercial shoot under spotlights" class="portfolio-thumb" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="portfolio-category font-syne">Commercial Film</span>
+                <h3 class="portfolio-item-title font-syne">Hyper-Drive Automotive</h3>
+                <p class="portfolio-item-desc">A fast-paced, high-contrast night commercial for a premium sports car launch.</p>
+                <button class="view-project-btn" aria-label="View Project Image">
+                  <span class="plus-icon">+</span>
+                </button>
+              </div>
             </div>
-            <h3 class="service-title">SEO & Semantic Dominance</h3>
-            <p class="service-desc-text">We push your pages to the top of Google using advanced semantic clusters, technical speed optimization, and ultra-high domain authority acquisitions.</p>
-            <div class="service-footer">
-              <span class="service-stat">Top 3 Rankings</span>
-              <a href="#contact" class="service-arrow"><i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
+          </article>
 
-          <!-- Service 3 -->
-          <div class="service-card scroll-reveal">
-            <div class="service-glow-edge"></div>
-            <div class="service-icon-container bg-glow-purple">
-              <i data-lucide="clapperboard"></i>
+          <!-- Item 2: Corporate -->
+          <article class="portfolio-item show" data-category="corporate" tabindex="0" aria-haspopup="dialog" id="portItemCorporate">
+            <div class="portfolio-thumb-wrapper">
+              <img src="assets/corporate.png" alt="Corporate interview filming in a modern glass boardroom" class="portfolio-thumb" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="portfolio-category font-syne">Corporate Video</span>
+                <h3 class="portfolio-item-title font-syne">NextGen Tech Systems</h3>
+                <p class="portfolio-item-desc">Premium corporate interview and brand overview detailing future tech solutions.</p>
+                <button class="view-project-btn" aria-label="View Project Image">
+                  <span class="plus-icon">+</span>
+                </button>
+              </div>
             </div>
-            <h3 class="service-title">Cinematic Ad Content</h3>
-            <p class="service-desc-text">High-production commercials, vertical video reels, engaging copy, and viral scripts engineered specifically to make viewers stop scrolling and click.</p>
-            <div class="service-footer">
-              <span class="service-stat">100M+ Views Created</span>
-              <a href="#contact" class="service-arrow"><i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
+          </article>
 
-          <!-- Service 4 -->
-          <div class="service-card scroll-reveal">
-            <div class="service-glow-edge"></div>
-            <div class="service-icon-container bg-glow-pink">
-              <i data-lucide="crown"></i>
+          <!-- Item 3: Documentary -->
+          <article class="portfolio-item show" data-category="documentary" tabindex="0" aria-haspopup="dialog" id="portItemDocumentary">
+            <div class="portfolio-thumb-wrapper">
+              <img src="assets/documentary.png" alt="Cameraman filming artisan woodworker in rustic workshop" class="portfolio-thumb" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="portfolio-category font-syne">Documentary</span>
+                <h3 class="portfolio-item-title font-syne">The Handcrafted Life</h3>
+                <p class="portfolio-item-desc">A deep intimate profile of traditional carpentry and the passion for woodwork.</p>
+                <button class="view-project-btn" aria-label="View Project Image">
+                  <span class="plus-icon">+</span>
+                </button>
+              </div>
             </div>
-            <h3 class="service-title">Luxury Brand Architecture</h3>
-            <p class="service-desc-text">Logos, visual styles, brand voice, and guidelines that make your company look like a market leader from Day One. Distinct, cohesive, and premium.</p>
-            <div class="service-footer">
-              <span class="service-stat">Premium Makeovers</span>
-              <a href="#contact" class="service-arrow"><i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
+          </article>
 
-          <!-- Service 5 -->
-          <div class="service-card scroll-reveal">
-            <div class="service-glow-edge"></div>
-            <div class="service-icon-container bg-glow-orange">
-              <i data-lucide="trending-up"></i>
+          <!-- Item 4: Social Media -->
+          <article class="portfolio-item show" data-category="social" tabindex="0" aria-haspopup="dialog" id="portItemSocial">
+            <div class="portfolio-thumb-wrapper">
+              <img src="assets/social.png" alt="Content creator recording video under colorful neon ring lights" class="portfolio-thumb" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="portfolio-category font-syne">Social Media Content</span>
+                <h3 class="portfolio-item-title font-syne">Creator Studio Hub</h3>
+                <p class="portfolio-item-desc">Vertical-format dynamic promotional videos designed for maximum engagement.</p>
+                <button class="view-project-btn" aria-label="View Project Image">
+                  <span class="plus-icon">+</span>
+                </button>
+              </div>
             </div>
-            <h3 class="service-title">Social Engine Mastery</h3>
-            <p class="service-desc-text">End-to-end community building, influencer management, and daily high-value visual posting that transforms passive followers into hyper-active brand advocates.</p>
-            <div class="service-footer">
-              <span class="service-stat">Avg +350% Growth</span>
-              <a href="#contact" class="service-arrow"><i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
-
-          <!-- Service 6 -->
-          <div class="service-card scroll-reveal">
-            <div class="service-glow-edge"></div>
-            <div class="service-icon-container bg-glow-green">
-              <i data-lucide="rocket"></i>
-            </div>
-            <h3 class="service-title">High-Performance Funnels</h3>
-            <p class="service-desc-text">We build insanely fast, customized conversion paths that guide digital users from first awareness to check-out smoothly, removing all drop-off points.</p>
-            <div class="service-footer">
-              <span class="service-stat">Avg +32% Conversions</span>
-              <a href="#contact" class="service-arrow"><i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO SHOWCASE SECTION -->
-    <section id="showcase" class="showcase-section">
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
       <div class="container">
-        <div class="section-header">
-          <span class="sub-title">Proven Triumphs</span>
-          <h2 class="section-title">Case Studies & Digital Assets</h2>
-          <p class="section-desc">A brief glimpse inside our marketing war room. High-impact designs paired with raw performance metrics.</p>
-        </div>
-
-        <div class="showcase-tabs">
-          <button class="tab-btn active" data-filter="all">All Operations</button>
-          <button class="tab-btn" data-filter="campaigns">Growth Campaigns</button>
-          <button class="tab-btn" data-filter="design">Premium Design</button>
-          <button class="tab-btn" data-filter="growth">Viral Social</button>
-        </div>
-
-        <div class="showcase-grid">
-          <!-- Project 1 -->
-          <div class="showcase-item scroll-reveal" data-category="campaigns">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <div class="project-img-placeholder gradient-1"></div>
-                <div class="project-overlay">
-                  <div class="project-metrics">
-                    <span class="metric-num">+480%</span>
-                    <span class="metric-label">Sales Conversion Growth</span>
-                  </div>
-                  <span class="btn btn-project-detail">View Details</span>
-                </div>
-              </div>
-              <div class="project-info">
-                <span class="project-cat">Digital Campaign</span>
-                <h3 class="project-title">Aether Wear Launch Campaign</h3>
-              </div>
-            </div>
+        <div class="contact-container-box">
+          <div class="contact-header">
+            <span class="section-kicker font-syne">GET IN TOUCH</span>
+            <h2 class="section-title font-syne">Let's Create Something Amazing</h2>
+            <div class="section-line"></div>
+            <p class="contact-intro">
+              Have a project in mind? Fill in details below and launch a WhatsApp discussion directly with our production desk.
+            </p>
           </div>
 
-          <!-- Project 2 -->
-          <div class="showcase-item scroll-reveal" data-category="design">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <div class="project-img-placeholder gradient-2"></div>
-                <div class="project-overlay">
-                  <div class="project-metrics">
-                    <span class="metric-num">Luxury</span>
-                    <span class="metric-label">Visual Brand Architecture</span>
-                  </div>
-                  <span class="btn btn-project-detail">View Details</span>
-                </div>
+          <!-- Interactive Contact Form -->
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="input-group">
+                <input type="text" id="contactName" name="name" required placeholder=" " class="form-input">
+                <label for="contactName" class="form-label">Full Name</label>
+                <span class="form-error-msg" id="nameError">Please enter your name.</span>
               </div>
-              <div class="project-info">
-                <span class="project-cat">Luxury Branding</span>
-                <h3 class="project-title">Vespera Hotels Identity</h3>
+              <div class="input-group">
+                <input type="tel" id="contactPhone" name="phone" required placeholder=" " class="form-input">
+                <label for="contactPhone" class="form-label">Phone Number</label>
+                <span class="form-error-msg" id="phoneError">Please enter a valid phone number.</span>
               </div>
             </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="showcase-item scroll-reveal" data-category="growth">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <div class="project-img-placeholder gradient-3"></div>
-                <div class="project-overlay">
-                  <div class="project-metrics">
-                    <span class="metric-num">32M+</span>
-                    <span class="metric-label">Organic Video Interactions</span>
-                  </div>
-                  <span class="btn btn-project-detail">View Details</span>
-                </div>
-              </div>
-              <div class="project-info">
-                <span class="project-cat">Viral Growth</span>
-                <h3 class="project-title">Apex Energy TikTok Dominance</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div class="showcase-item scroll-reveal" data-category="campaigns">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <div class="project-img-placeholder gradient-4"></div>
-                <div class="project-overlay">
-                  <div class="project-metrics">
-                    <span class="metric-num">6.4x</span>
-                    <span class="metric-label">Return on Ad Spend (ROAS)</span>
-                  </div>
-                  <span class="btn btn-project-detail">View Details</span>
-                </div>
-              </div>
-              <div class="project-info">
-                <span class="project-cat">E-Commerce Ads</span>
-                <h3 class="project-title">Nova Essentials Funnel</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5 -->
-          <div class="showcase-item scroll-reveal" data-category="design">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <div class="project-img-placeholder gradient-5"></div>
-                <div class="project-overlay">
-                  <div class="project-metrics">
-                    <span class="metric-num">99.8</span>
-                    <span class="metric-label">Lighthouse Speed Rating</span>
-                  </div>
-                  <span class="btn btn-project-detail">View Details</span>
-                </div>
-              </div>
-              <div class="project-info">
-                <span class="project-cat">High-End Web</span>
-                <h3 class="project-title">Helios Finance UI/UX</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6 -->
-          <div class="showcase-item scroll-reveal" data-category="growth">
-            <div class="project-card">
-              <div class="project-img-wrapper">
-                <div class="project-img-placeholder gradient-6"></div>
-                <div class="project-overlay">
-                  <div class="project-metrics">
-                    <span class="metric-num">+250K</span>
-                    <span class="metric-label">Active Community Members</span>
-                  </div>
-                  <span class="btn btn-project-detail">View Details</span>
-                </div>
-              </div>
-              <div class="project-info">
-                <span class="project-cat">Social Domination</span>
-                <h3 class="project-title">Solis Fitness Launch Engine</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INTERACTIVE CONTACT & WHATSAPP GENERATOR -->
-    <section id="contact" class="contact-section">
-      <div class="container">
-        <div class="contact-layout">
-          <!-- Contact Left: Rich Form Builder -->
-          <div class="contact-form-container scroll-reveal">
-            <div class="badge-container">
-              <span class="hero-badge"><span class="badge-dot dot-orange"></span> Direct Pipeline</span>
-            </div>
-            <h2 class="contact-title">Let's Create Something Dominant</h2>
-            <p class="contact-desc">Fill out your parameters below. Our system will immediately pre-build your digital growth brief so we can coordinate instantly over WhatsApp.</p>
-            
-            <form id="growth-contact-form" class="growth-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="client-name">Your Name</label>
-                  <div class="input-wrapper">
-                    <i data-lucide="user"></i>
-                    <input type="text" id="client-name" placeholder="John Doe" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="company-name">Company Name</label>
-                  <div class="input-wrapper">
-                    <i data-lucide="building"></i>
-                    <input type="text" id="company-name" placeholder="Acme Corp" required>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="service-select">Prime Objective</label>
-                <div class="input-wrapper">
-                  <i data-lucide="sparkles"></i>
-                  <select id="service-select" required>
-                    <option value="" disabled selected>Select prime marketing objective...</option>
-                    <option value="Complete Brand Makeover">Complete Brand Makeover (CREATE)</option>
-                    <option value="Cinematic Social Domination">Cinematic Social Domination (CAPTIVATE)</option>
-                    <option value="High-ROI Performance Ads">High-ROI Performance Ads (CONVERT)</option>
-                    <option value="Search Dominance (Advanced SEO)">Search Dominance (Advanced SEO)</option>
-                    <option value="Complete Growth Transformation">Complete Growth Transformation (All 3)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="budget-range">Monthly Budget Allocation: <span id="budget-val" class="highlight-val">$2,500</span></label>
-                <input type="range" id="budget-range" min="1000" max="50000" step="500" value="2500" class="premium-slider">
-                <div class="slider-labels">
-                  <span>$1k</span>
-                  <span>$10k</span>
-                  <span>$25k</span>
-                  <span>$50k+</span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="client-message">Project Brief / Ambitions</label>
-                <div class="input-wrapper textarea-wrapper">
-                  <i data-lucide="file-text"></i>
-                  <textarea id="client-message" placeholder="Briefly describe your ambitions or current blockages..." rows="4"></textarea>
-                </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary submit-btn">
-                <span>Generate WhatsApp Brief</span>
-                <i data-lucide="message-square"></i>
-              </button>
-            </form>
-          </div>
-
-          <!-- Contact Right: WhatsApp Info & Quick Link Details -->
-          <div class="contact-details-container scroll-reveal">
-            <div class="glass-info-card wa-direct-card">
-              <div class="glow-blur-layer"></div>
-              
-              <div class="wa-header">
-                <div class="wa-avatar-group">
-                  <div class="wa-avatar">WC</div>
-                  <span class="online-indicator"></span>
-                </div>
-                <div class="wa-meta">
-                  <h4 class="wa-agency-name">Weekend Creations</h4>
-                  <p class="wa-status">Active Growth Desk</p>
-                </div>
-              </div>
-              
-              <div class="wa-chat-body">
-                <div class="chat-bubble received">
-                  <p>Welcome! We specialize in premium advertising and high-converting marketing frameworks. Ready to out-compete your market?</p>
-                  <span class="chat-time">Just now</span>
-                </div>
-                <div class="chat-bubble received">
-                  <p>Fill out the form on the left to immediately package your goals into an actionable brief, or tap the button below to message us directly!</p>
-                  <span class="chat-time">Just now</span>
-                </div>
-                <div class="chat-bubble sent hidden" id="dynamic-user-bubble">
-                  <p id="dynamic-bubble-text"></p>
-                  <span class="chat-time" id="dynamic-bubble-time">1:00 AM</span>
-                </div>
-              </div>
-
-              <div class="wa-footer">
-                <a href="https://wa.me/919446777095" target="_blank" class="btn btn-whatsapp-cta" id="direct-wa-btn">
-                  <i class="wa-icon-svg">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.517 2.266 2.27 3.507 5.289 3.507 8.494-.002 6.66-5.338 11.997-11.95 11.997-2.006-.002-3.975-.5-5.729-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.528 2.016 14.069 1 11.48 1c-5.446 0-9.87 4.368-9.874 9.798-.002 1.898.486 3.755 1.414 5.385L1.93 20.3l4.717-1.146zm11.758-5.388c-.302-.15-1.782-.876-2.057-.975-.275-.1-.475-.15-.675.15-.2.299-.775.975-.95 1.174-.175.2-.35.224-.652.075-1.028-.514-1.797-.872-2.517-1.493-.72-.62-1.2-1.392-1.375-1.691-.175-.3-.019-.462.13-.611.135-.134.302-.349.453-.524.15-.175.2-.299.3-.5.1-.2.05-.375-.025-.524-.075-.15-.675-1.62-.925-2.22-.243-.584-.489-.505-.675-.515-.175-.01-.375-.01-.575-.01-.2 0-.525.075-.8 1.05-.275.975-1.05 2.194-1.125 2.343-.075.15-.15.299.075.449.225.149 1.15.751 1.797 1.309.837.72 1.543 1.15 2.35 1.464.606.236 1.15.19 1.583.125.483-.072 1.482-.604 1.69-1.189.208-.584.208-1.087.146-1.189-.06-.1-.224-.15-.526-.3z"/>
-                    </svg>
-                  </i>
-                  <span>WhatsApp Instantly</span>
-                </a>
-              </div>
+            <div class="input-group full-width">
+              <textarea id="contactMessage" name="message" required placeholder=" " class="form-textarea" rows="4"></textarea>
+              <label for="contactMessage" class="form-label">Project Message</label>
+              <span class="form-error-msg" id="messageError">Please type your message.</span>
             </div>
 
-            <!-- Alternative Quick details -->
-            <div class="quick-details-grid">
-              <div class="detail-badge scroll-reveal">
-                <i data-lucide="phone"></i>
-                <div class="badge-text">
-                  <span class="detail-label">Direct Line</span>
-                  <a href="tel:+919446777095" class="detail-val">+91 9446777095</a>
-                </div>
-              </div>
-              <div class="detail-badge scroll-reveal">
-                <i data-lucide="mail"></i>
-                <div class="badge-text">
-                  <span class="detail-label">Email Channels</span>
-                  <a href="mailto:hello@weekendcreations.com" class="detail-val">hello@weekendcreations.com</a>
-                </div>
-              </div>
-            </div>
-          </div>
+            <button type="submit" class="btn btn-primary btn-submit" id="btnSubmitWhatsApp">
+              <svg class="icon-svg btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.62.963 3.41 1.47 5.259 1.471h.005c5.479 0 9.935-4.457 9.94-9.943.002-2.657-1.03-5.155-2.908-7.034-1.879-1.878-4.379-2.913-7.042-2.914-5.485 0-9.94 4.455-9.945 9.94-.001 1.917.499 3.79 1.447 5.424l-.988 3.607 3.693-.97.012.009zM17.65 14.77c-.3-.15-1.77-.874-2.046-.975-.276-.101-.476-.15-.676.15-.2.3-.774.975-.95 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.89-.795-1.49-1.77-1.665-2.07-.175-.3-.019-.462.13-.61.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.628-.926-2.228-.244-.588-.491-.507-.676-.517-.174-.01-.375-.012-.575-.012-.2 0-.525.075-.8.375-.276.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.116 4.525.715.31 1.273.495 1.708.633.718.228 1.37.196 1.885.12.574-.085 1.77-.724 2.02-1.425.25-.7.25-1.299.175-1.425-.076-.125-.275-.2-.575-.35z"/>
+              </svg>
+              Send via WhatsApp
+            </button>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- LUXURIOUS FOOTER -->
-  <footer class="luxury-footer">
-    <div class="container footer-container">
+  <!-- Premium Cinematic Footer -->
+  <footer class="main-footer">
+    <div class="footer-container container">
       <div class="footer-brand">
-        <a href="#" class="logo">
-          <span class="logo-accent">Weekend</span>Creations<span class="dot">.</span>
-        </a>
-        <p class="footer-motto">CREATE. CAPTIVATE. CONVERT.</p>
-        <p class="footer-desc">Crafting elite, high-ROI marketing mechanisms, digital designs, and advertising strategies for modern business empires.</p>
+        <div class="footer-logo-box">
+          <img src="assets/logo.jpg" alt="Banana Films Logo" class="footer-logo" id="footerLogoImg">
+          <span class="footer-brand-name font-syne">BANANA <span class="highlight-yellow">FILMS</span></span>
+        </div>
+        <p class="footer-tagline">Bringing Stories to Life Through Film.</p>
       </div>
 
-      <div class="footer-links-group">
-        <div class="footer-column">
-          <h4 class="footer-col-title">Navigation</h4>
-          <a href="#hero" class="footer-link">Home</a>
-          <a href="#philosophy" class="footer-link">Philosophy</a>
-          <a href="#services" class="footer-link">Services</a>
-          <a href="#showcase" class="footer-link">Showcase</a>
-        </div>
-        <div class="footer-column">
-          <h4 class="footer-col-title">Capabilities</h4>
-          <a href="#services" class="footer-link">Performance Ads</a>
-          <a href="#services" class="footer-link">Organic SEO</a>
-          <a href="#services" class="footer-link">Cinematic Video</a>
-          <a href="#services" class="footer-link">Brand Identity</a>
-        </div>
-        <div class="footer-column">
-          <h4 class="footer-col-title">Connect</h4>
-          <a href="https://wa.me/919446777095" target="_blank" class="footer-link highlight-wa"><i data-lucide="message-square"></i> WhatsApp</a>
-          <a href="tel:+919446777095" class="footer-link"><i data-lucide="phone"></i> Call Desk</a>
-          <a href="mailto:hello@weekendcreations.com" class="footer-link"><i data-lucide="mail"></i> Email Us</a>
-        </div>
+      <div class="footer-contact">
+        <h4 class="footer-title font-syne">Production Desk</h4>
+        <a href="https://wa.me/919446777095?text=Hello%20Banana%20Films,%20I%20would%20like%20to%20discuss%20a%20project." 
+           class="footer-phone font-syne whatsapp-btn-action" target="_blank" rel="noopener noreferrer" id="footerPhoneLink">
+          +91 9446777095
+        </a>
+        <p class="footer-email">hello@bananafilms.co</p>
       </div>
     </div>
-
     <div class="footer-bottom">
-      <div class="container footer-bottom-container">
-        <p class="copyright-text">&copy; 2026 Weekend Creations. All rights reserved. Created with absolute precision.</p>
-        <div class="footer-socials">
-          <a href="#" class="social-icon" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-          <a href="#" class="social-icon" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-          <a href="#" class="social-icon" aria-label="Twitter/X"><i data-lucide="twitter"></i></a>
-          <a href="#" class="social-icon" aria-label="Dribbble"><i data-lucide="dribbble"></i></a>
+      <div class="container footer-bottom-flex">
+        <p class="copyright">&copy; 2025 Banana Films. All rights reserved.</p>
+        <div class="footer-terms">
+          <a href="#home">Home</a>
+          <a href="#portfolio">Work</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Custom JavaScript -->
+  <!-- Custom Image Gallery Lightbox Modal -->
+  <div class="lightbox" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image Preview" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxCloseBtn" aria-label="Close Lightbox">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrevBtn" aria-label="Previous Image">&#10094;</button>
+    
+    <div class="lightbox-content">
+      <figure class="lightbox-figure">
+        <img src="" alt="" class="lightbox-img" id="lightboxActiveImg">
+        <figcaption class="lightbox-caption">
+          <span class="lightbox-caption-cat font-syne" id="lightboxActiveCat">Category</span>
+          <h4 class="lightbox-caption-title font-syne" id="lightboxActiveTitle">Project Title</h4>
+          <p class="lightbox-caption-desc" id="lightboxActiveDesc">Project Description</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <button class="lightbox-nav lightbox-next" id="lightboxNextBtn" aria-label="Next Image">&#10095;</button>
+  </div>
+
+  <!-- Floating Sticky WhatsApp CTA Action Button -->
+  <a href="https://wa.me/919446777095?text=Hello%20Banana%20Films,%20I%20would%20like%20to%20discuss%20a%20project." 
+     class="whatsapp-float-btn whatsapp-btn-action" target="_blank" rel="noopener noreferrer" aria-label="Contact Banana Films via WhatsApp" id="floatingWhatsAppBtn">
+    <span class="whatsapp-pulse"></span>
+    <svg class="whatsapp-float-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.62.963 3.41 1.47 5.259 1.471h.005c5.479 0 9.935-4.457 9.94-9.943.002-2.657-1.03-5.155-2.908-7.034-1.879-1.878-4.379-2.913-7.042-2.914-5.485 0-9.94 4.455-9.945 9.94-.001 1.917.499 3.79 1.447 5.424l-.988 3.607 3.693-.97.012.009zM17.65 14.77c-.3-.15-1.77-.874-2.046-.975-.276-.101-.476-.15-.676.15-.2.3-.774.975-.95 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.89-.795-1.49-1.77-1.665-2.07-.175-.3-.019-.462.13-.61.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.628-.926-2.228-.244-.588-.491-.507-.676-.517-.174-.01-.375-.012-.575-.012-.2 0-.525.075-.8.375-.276.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.11 3.224 5.116 4.525.715.31 1.273.495 1.708.633.718.228 1.37.196 1.885.12.574-.085 1.77-.724 2.02-1.425.25-.7.25-1.299.175-1.425-.076-.125-.275-.2-.575-.35z"/>
+    </svg>
+  </a>
+
+  <!-- Custom Javascript Logic -->
   <script src="app.js"></script>
 </body>
 </html>

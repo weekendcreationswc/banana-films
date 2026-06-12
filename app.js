@@ -1,281 +1,371 @@
 /* ==========================================================================
-   WEEKEND CREATIONS - INTERACTIVE WEB LOGIC (app.js)
+   BANANA FILMS - INTERACTIVE LOGIC (app.js)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Lucide Icons
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
 
-  // 2. Mobile Menu Drawer Toggle
-  const mobileToggle = document.querySelector('.mobile-menu-toggle');
-  const mobileDrawer = document.querySelector('.mobile-menu-drawer');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-  if (mobileToggle && mobileDrawer) {
-    mobileToggle.addEventListener('click', () => {
-      mobileToggle.classList.toggle('open');
-      mobileDrawer.classList.toggle('open');
-    });
-
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileToggle.classList.remove('open');
-        mobileDrawer.classList.remove('open');
-      });
-    });
-  }
-
-  // 3. Floating Navbar Scroll Effect
-  const header = document.querySelector('.floating-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header?.classList.add('scrolled');
-    } else {
-      header?.classList.remove('scrolled');
-    }
-  });
-
-  // 4. Custom Follow Cursor Aura (Desktop Only)
-  const cursor = document.querySelector('.custom-cursor');
-  const cursorDot = document.querySelector('.custom-cursor-dot');
+  /* --------------------------------------------------------------------------
+     1. STICKY HEADER & SCROLL DETECTION
+     -------------------------------------------------------------------------- */
+  const header = document.getElementById('mainHeader');
   
-  if (cursor && cursorDot) {
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      
-      // The dot follows coordinates exactly
-      cursorDot.style.left = `${mouseX}px`;
-      cursorDot.style.top = `${mouseY}px`;
-    });
-
-    // Smooth LERP animation loop for the outer trailing cursor ring
-    const animateCursor = () => {
-      // Lerp coefficient for soft elastic drag
-      const lerpFactor = 0.15;
-      cursorX += (mouseX - cursorX) * lerpFactor;
-      cursorY += (mouseY - cursorY) * lerpFactor;
-
-      cursor.style.left = `${cursorX}px`;
-      cursor.style.top = `${cursorY}px`;
-
-      requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
-
-    // Hover elements selectors
-    const hoverLinks = document.querySelectorAll('a, button, input, select, textarea, [role="button"], .project-card');
-    
-    hoverLinks.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hovering');
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hovering');
-      });
-    });
-
-    // Philosophy Card custom colors hovers
-    const createCard = document.querySelector('.card-create');
-    const captivateCard = document.querySelector('.card-captivate');
-    const convertCard = document.querySelector('.card-convert');
-
-    if (createCard) {
-      createCard.addEventListener('mouseenter', () => cursor.classList.add('hovering-create'));
-      createCard.addEventListener('mouseleave', () => cursor.classList.remove('hovering-create'));
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
     }
-    if (captivateCard) {
-      captivateCard.addEventListener('mouseenter', () => cursor.classList.add('hovering-captivate'));
-      captivateCard.addEventListener('mouseleave', () => cursor.classList.remove('hovering-captivate'));
-    }
-    if (convertCard) {
-      convertCard.addEventListener('mouseenter', () => cursor.classList.add('hovering-convert'));
-      convertCard.addEventListener('mouseleave', () => cursor.classList.remove('hovering-convert'));
-    }
-  }
-
-  // 5. Hero Card Mouse Interactive 3D Tilt
-  const tiltCard = document.querySelector('.premium-card-wrapper');
-  if (tiltCard) {
-    window.addEventListener('mousemove', (e) => {
-      const halfWidth = window.innerWidth / 2;
-      const halfHeight = window.innerHeight / 2;
-      
-      // Calculate rotation bounds based on mouse position
-      const mouseX = e.clientX - halfWidth;
-      const mouseY = e.clientY - halfHeight;
-      
-      const rotateX = (mouseY / halfHeight) * -12; // tilt max 12 degrees
-      const rotateY = (mouseX / halfWidth) * 12;
-
-      tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    tiltCard.addEventListener('mouseleave', () => {
-      // Reset smoothly when cursor leaves screen
-      tiltCard.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    });
-  }
-
-  // 6. IntersectionObserver Scroll Reveals
-  const revealElements = document.querySelectorAll('.scroll-reveal');
-  const revealOptions = {
-    threshold: 0.12,
-    rootMargin: '0px 0px -50px 0px'
   };
 
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target); // Trigger reveal only once
-      }
-    });
-  }, revealOptions);
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Run on init to capture reload position
 
-  revealElements.forEach(el => revealObserver.observe(el));
 
-  // 7. Active Nav Section Indicator on Scroll
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+  /* --------------------------------------------------------------------------
+     2. MOBILE NAV OVERLAY & HAMBURGER TOGGLE
+     -------------------------------------------------------------------------- */
+  const hamburgerBtn = document.getElementById('hamburgerMenuBtn');
+  const mobileNavMenu = document.getElementById('mobileNavMenu');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-item');
 
-  window.addEventListener('scroll', () => {
-    let currentSection = '';
+  const toggleMobileNav = () => {
+    const isActive = hamburgerBtn.classList.toggle('active');
+    mobileNavMenu.classList.toggle('active');
     
-    sections.forEach(sec => {
-      const secTop = sec.offsetTop;
-      const secHeight = sec.clientHeight;
-      if (window.scrollY >= (secTop - 250)) {
-        currentSection = sec.getAttribute('id') || '';
-      }
-    });
+    // Accessibility states
+    hamburgerBtn.setAttribute('aria-expanded', isActive);
+    mobileNavMenu.setAttribute('aria-hidden', !isActive);
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('data-sec') === currentSection) {
-        link.classList.add('active');
+    // Body scroll lock
+    if (isActive) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  };
+
+  hamburgerBtn.addEventListener('click', toggleMobileNav);
+
+  // Close menu when clicking a link
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (hamburgerBtn.classList.contains('active')) {
+        toggleMobileNav();
       }
     });
   });
 
-  // 8. Project Filters
-  const filterButtons = document.querySelectorAll('.tab-btn');
-  const showcaseItems = document.querySelectorAll('.showcase-item');
 
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Set active button
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  /* --------------------------------------------------------------------------
+     3. INTERSECTION OBSERVER FOR ACTIVE NAV & FADE ANIMATIONS
+     -------------------------------------------------------------------------- */
+  const sections = document.querySelectorAll('section');
+  const navItems = document.querySelectorAll('.nav-item');
+  const mobNavItems = document.querySelectorAll('.mobile-nav-item');
+  const animElements = document.querySelectorAll('.fade-in-element');
 
-      const filterVal = btn.getAttribute('data-filter');
+  // Observer options
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -60% 0px', // Trigger when section occupies center of screen
+    threshold: 0
+  };
 
-      showcaseItems.forEach(item => {
-        const itemCat = item.getAttribute('data-category');
+  // Section visibility observer
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
         
-        // Hide / Show transitions
-        if (filterVal === 'all' || itemCat === filterVal) {
-          item.classList.remove('hidden');
-          setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'scale(1)';
-          }, 50);
+        // Update Desktop Nav
+        navItems.forEach(item => {
+          if (item.getAttribute('href') === `#${id}`) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+
+        // Update Mobile Nav
+        mobNavItems.forEach(item => {
+          if (item.getAttribute('href') === `#${id}`) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => sectionObserver.observe(section));
+
+  // Fade-in entry animation observer
+  const fadeObserverOptions = {
+    root: null,
+    rootMargin: '0px 0px -100px 0px',
+    threshold: 0.1
+  };
+
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        fadeObserver.unobserve(entry.target); // Trigger once
+      }
+    });
+  }, fadeObserverOptions);
+
+  animElements.forEach(el => fadeObserver.observe(el));
+
+  // Observe highlighting columns & portfolio grid elements too
+  const cards = document.querySelectorAll('.highlight-card, .portfolio-item, .contact-container-box');
+  cards.forEach(card => {
+    card.classList.add('fade-in-element');
+    fadeObserver.observe(card);
+  });
+
+
+  /* --------------------------------------------------------------------------
+     4. PORTFOLIO FILTER MECHANISM
+     -------------------------------------------------------------------------- */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Update filter tabs UI state
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      // Filter gallery elements
+      portfolioItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        if (filterValue === 'all' || filterValue === category) {
+          item.classList.add('show');
         } else {
-          item.style.opacity = '0';
-          item.style.transform = 'scale(0.9)';
-          setTimeout(() => {
-            item.classList.add('hidden');
-          }, 300);
+          item.classList.remove('show');
         }
       });
     });
   });
 
-  // 9. Contact Budget Range Tracker
-  const budgetRange = document.getElementById('budget-range');
-  const budgetVal = document.getElementById('budget-val');
 
-  if (budgetRange && budgetVal) {
-    budgetRange.addEventListener('input', (e) => {
-      const val = parseInt(e.target.value);
-      if (val >= 50000) {
-        budgetVal.textContent = `$50,000+`;
-      } else {
-        budgetVal.textContent = `$${val.toLocaleString()}`;
-      }
-    });
-  }
+  /* --------------------------------------------------------------------------
+     5. VANILLA LIGHTBOX MODAL WITH NAVIGATION
+     -------------------------------------------------------------------------- */
+  const lightbox = document.getElementById('lightboxModal');
+  const lightboxImg = document.getElementById('lightboxActiveImg');
+  const lightboxCat = document.getElementById('lightboxActiveCat');
+  const lightboxTitle = document.getElementById('lightboxActiveTitle');
+  const lightboxDesc = document.getElementById('lightboxActiveDesc');
+  const closeBtn = document.getElementById('lightboxCloseBtn');
+  const prevBtn = document.getElementById('lightboxPrevBtn');
+  const nextBtn = document.getElementById('lightboxNextBtn');
 
-  // 10. Contact Form Submit: Prefilled WhatsApp Generator & Dynamic Chat Bubble
-  const contactForm = document.getElementById('growth-contact-form');
-  const userChatBubble = document.getElementById('dynamic-user-bubble');
-  const bubbleText = document.getElementById('dynamic-bubble-text');
-  const bubbleTime = document.getElementById('dynamic-bubble-time');
-  const directWaBtn = document.getElementById('direct-wa-btn');
+  let activeList = []; // Keeps track of currently filtered/visible items
+  let currentIndex = 0;
 
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+  // Open Lightbox
+  const openLightbox = (index) => {
+    currentIndex = index;
+    const project = activeList[currentIndex];
+    
+    lightboxImg.src = project.imgSrc;
+    lightboxImg.alt = project.imgAlt;
+    lightboxCat.textContent = project.category;
+    lightboxTitle.textContent = project.title;
+    lightboxDesc.textContent = project.desc;
+    
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Lock background scroll
+    closeBtn.focus();
+  };
 
-      // Retrieve form values
-      const name = document.getElementById('client-name')?.value || '';
-      const company = document.getElementById('company-name')?.value || '';
-      const objective = document.getElementById('service-select')?.value || '';
-      const rawBudget = budgetRange?.value || '2500';
-      const budget = parseInt(rawBudget) >= 50000 ? '$50,000+' : `$${parseInt(rawBudget).toLocaleString()}`;
-      const msg = document.getElementById('client-message')?.value || '';
+  // Close Lightbox
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // Release background scroll
+  };
 
-      // Format custom WhatsApp text body
-      const wpHeader = `*🚀 NEW BUSINESS BRIEF - WEEKEND CREATIONS* \n\n`;
-      const wpBody = `Hi Weekend Creations! \n\n` + 
-                     `I'm *${name}* representing *${company}*.\n` + 
-                     `I want to partner with you for: \n` + 
-                     `👉 *${objective}*\n\n` + 
-                     `*📊 Monthly Budget Allocation:* ${budget}\n` + 
-                     (msg ? `*📝 Our Ambition Brief:* \n"${msg}"\n\n` : `\n`) + 
-                     `Let's CREATE, CAPTIVATE, and CONVERT our audience!`;
+  // Navigate Lightbox
+  const slideNext = () => {
+    currentIndex = (currentIndex + 1) % activeList.length;
+    openLightbox(currentIndex);
+  };
 
-      const encodedText = encodeURIComponent(wpBody);
-      const whatsAppLink = `https://wa.me/919446777095?text=${encodedText}`;
+  const slidePrev = () => {
+    currentIndex = (currentIndex - 1 + activeList.length) % activeList.length;
+    openLightbox(currentIndex);
+  };
 
-      // Trigger Interactive UI Mock Chat Update
-      if (userChatBubble && bubbleText && bubbleTime) {
-        // Build readable preview bubble on dashboard
-        bubbleText.innerHTML = `<strong>Brief Sent!</strong><br>Objective: ${objective}<br>Budget: ${budget}<br>Opening WhatsApp...`;
-        
-        // Format Current Time
-        const now = new Date();
-        let hours = now.getHours();
-        let minutes = now.getMinutes();
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // hour '0' should be '12'
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        
-        bubbleTime.textContent = `${hours}:${minutes} ${ampm}`;
-        userChatBubble.classList.remove('hidden');
+  // Map clicks on portfolio items
+  portfolioItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      // Rebuild visible list
+      activeList = [];
+      let clickedIdx = 0;
 
-        // Scroll chat window down smoothly
-        const chatBody = document.querySelector('.wa-chat-body');
-        if (chatBody) {
-          chatBody.scrollTop = chatBody.scrollHeight;
+      // Extract all currently visible portfolio details
+      const visibleItems = document.querySelectorAll('.portfolio-item.show');
+      visibleItems.forEach((el, idx) => {
+        const img = el.querySelector('.portfolio-thumb');
+        const cat = el.querySelector('.portfolio-category').textContent;
+        const title = el.querySelector('.portfolio-item-title').textContent;
+        const desc = el.querySelector('.portfolio-item-desc').textContent;
+
+        activeList.push({
+          element: el,
+          imgSrc: img.getAttribute('src'),
+          imgAlt: img.getAttribute('alt'),
+          category: cat,
+          title: title,
+          desc: desc
+        });
+
+        if (el === item) {
+          clickedIdx = idx;
         }
-      }
+      });
 
-      // Update the main CTA button in the chat box to match new configuration
-      if (directWaBtn) {
-        directWaBtn.href = whatsAppLink;
-      }
-
-      // Proactively open the WhatsApp redirect tab inside user's window after a brief UX animation delay
-      setTimeout(() => {
-        window.open(whatsAppLink, '_blank');
-      }, 900);
+      openLightbox(clickedIdx);
     });
-  }
+
+    // Support trigger lightbox via Enter key on focused keyboard navigation
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        item.click();
+      }
+    });
+  });
+
+  // Lightbox Click Listeners
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', slideNext);
+  prevBtn.addEventListener('click', slidePrev);
+
+  // Close lightbox clicking on backdrop background overlay
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox-content')) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+      slideNext();
+    } else if (e.key === 'ArrowLeft') {
+      slidePrev();
+    }
+  });
+
+  // Touch Swipe Support for Mobile Lightbox
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  const handleSwipe = () => {
+    const threshold = 50; // swipe length minimum
+    if (touchEndX < touchStartX - threshold) {
+      slideNext(); // Swiped Left -> Show Next
+    } else if (touchEndX > touchStartX + threshold) {
+      slidePrev(); // Swiped Right -> Show Prev
+    }
+  };
+
+
+  /* --------------------------------------------------------------------------
+     6. CONTACT FORM VALIDATION & WHATSAPP REDIRECTION
+     -------------------------------------------------------------------------- */
+  const contactForm = document.getElementById('contactForm');
+  const nameInput = document.getElementById('contactName');
+  const phoneInput = document.getElementById('contactPhone');
+  const messageInput = document.getElementById('contactMessage');
+
+  // Input listener resets invalid state
+  const clearError = (inputEl) => {
+    const group = inputEl.closest('.input-group');
+    group.classList.remove('invalid');
+  };
+
+  [nameInput, phoneInput, messageInput].forEach(input => {
+    input.addEventListener('input', () => clearError(input));
+  });
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    let isFormValid = true;
+
+    // Validate Name
+    if (!nameInput.value.trim()) {
+      nameInput.closest('.input-group').classList.add('invalid');
+      isFormValid = false;
+    } else {
+      nameInput.closest('.input-group').classList.remove('invalid');
+    }
+
+    // Validate Phone (At least 5 digits check for simple validation)
+    const phoneRegex = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+    if (!phoneInput.value.trim() || phoneInput.value.trim().length < 5 || !phoneRegex.test(phoneInput.value.trim())) {
+      phoneInput.closest('.input-group').classList.add('invalid');
+      isFormValid = false;
+    } else {
+      phoneInput.closest('.input-group').classList.remove('invalid');
+    }
+
+    // Validate Message
+    if (!messageInput.value.trim()) {
+      messageInput.closest('.input-group').classList.add('invalid');
+      isFormValid = false;
+    } else {
+      messageInput.closest('.input-group').classList.remove('invalid');
+    }
+
+    // If form is valid, redirect to WhatsApp with pre-filled message content
+    if (isFormValid) {
+      const name = encodeURIComponent(nameInput.value.trim());
+      const phone = encodeURIComponent(phoneInput.value.trim());
+      const message = encodeURIComponent(messageInput.value.trim());
+
+      // Format custom message string
+      const textMessage = `Hello Banana Films,%0A%0AMy name is: *${name}*%0APhone: *${phone}*%0A%0AI would like to discuss a project:%0A${message}`;
+      
+      const whatsappBaseUrl = 'https://wa.me/919446777095';
+      const finalWhatsAppUrl = `${whatsappBaseUrl}?text=${textMessage}`;
+
+      // Open WhatsApp directly in new tab
+      window.open(finalWhatsAppUrl, '_blank', 'noopener,noreferrer');
+
+      // Clear Form Fields
+      contactForm.reset();
+      
+      // Force input fields placeholder transitions reset
+      [nameInput, phoneInput, messageInput].forEach(input => {
+        input.dispatchEvent(new Event('input')); // Reset label float positions
+      });
+    }
+  });
+
 });
